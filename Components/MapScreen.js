@@ -46,7 +46,7 @@ class MapScreen extends Component {
           }}
         >
         {this.state.markers.map((building, index) => 
-            <Marker key={index} coordinate={building.location.coordinates} title="Okay" description="Okay 2" />
+            <Marker key={index} coordinate={building.location.coordinates} title={building.buildingaddress} description={building.neighborhood} />
         )}
         {/* <MarkerList markers={this.state.dataSource}/> */}
         {/* <MarkerList /> */}
