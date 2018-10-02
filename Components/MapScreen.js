@@ -24,11 +24,15 @@ class MapScreen extends Component {
             newArray.push(building);
         })
         this.setState({markers: newArray}, () => {
-            console.log(this.state);
-            console.log("I just printed the state");
+            // console.log(this.state);
+            // console.log("I just printed the state");
         });
     }
     render(){
+        if(this.state.markers[0]){
+            console.log(this.state.markers[0].location.coordinates);
+            console.log("SHIT");
+        }
       return(
         <MapView
           style={{ flex: 1 }}
@@ -41,10 +45,11 @@ class MapScreen extends Component {
             longitudeDelta: 0.0421,
           }}
         >
-        {this.state.markers.map(building => {
-            <Marker coordinates={building.coordinates} title="Okay" description="Okay 2" />
-        })}
+        {this.state.markers.map((building, index) => 
+            <Marker key={index} coordinate={building.location.coordinates} title="Okay" description="Okay 2" />
+        )}
         {/* <MarkerList markers={this.state.dataSource}/> */}
+        {/* <MarkerList /> */}
         </MapView>
       )
     }
